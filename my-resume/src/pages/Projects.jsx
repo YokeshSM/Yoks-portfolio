@@ -66,9 +66,10 @@ import {Link, NavLink} from "react-router-dom"
 import { BsGithub } from "react-icons/bs";
 
 const Card = ({ title, description, imgSrc, gitlink }) => {
+
   return (
 <div className="flex flex-col items-center sm:w-64 h-96 p-5 hover:shadow-xl ">
-  <div className="flex flex-col items-center text-center rounded-md bg-pink-300 w-full h-full">
+  <div className="flex flex-col items-center text-center rounded-md bg-blue-100 w-full h-full">
     <div className="h-40 w-full overflow-hidden rounded-md">
       <img
         src={imgSrc}
@@ -79,16 +80,17 @@ const Card = ({ title, description, imgSrc, gitlink }) => {
     <div className="p-4 flex flex-col justify-between items-center h-full">
       <h2 className="text-lg font-semibold">{title}</h2>
       <p className="text-sm mt-2 overflow-hidden line-clamp-3">{description}</p>
+      <button className="flex justify-center gap-5 items-center">
       <a
         href={gitlink}
-        className="bg-blue-500 text-white mt-auto px-4 py-2 rounded-md hover:bg-blue-700 transition flex justify-center items-center"
+        className="bg-blue-500 text-white mt-auto px-4 py-2 rounded-md hover:bg-blue-700 transition flex justify-between items-center gap-4"
         target="_blank"
         rel="noopener noreferrer"
-      >
-        <button className="flex justify-around gap-5 items-center">
-          Let's Go <BsGithub />
-        </button>
-      </a>
+       >
+      Let's Go 
+      <BsGithub />
+  </a>
+</button>
     </div>
   </div>
 </div>
@@ -105,7 +107,7 @@ const Projects = () => {
         "A stationery shop billing software is a system that can maintain all the items in your stationery shop in a very organized and manageable way. This software solution combines all aspects, including billing and monitoring. Tools Used: MySQL, Java, VS code",
       imgSrc:
         'https://im.whatshot.in/img/2018/Apr/shutterstock-425860360-cropped-1522823797.jpg?wp=1',
-      gitlink:'https://github.com/YokeshSM/consoledb'
+      gitlink:"https://github.com/YokeshSM/consoledb"
     },
     {
       id: 2,
@@ -114,7 +116,7 @@ const Projects = () => {
         'This Main idea of the project is to poke fun at an idea or create a humorous message. API used: "Meme API" contains memes in JSON format. Tools Used: HTML5, CSS, JavaScript & VS code',
       imgSrc:
         'https://www.mohenesh.com/wp-content/uploads/2021/11/Doge-meme-2-1024x614.webp',
-      gitlink:'https://github.com/YokeshSM/MemeGen'
+      gitlink:"https://github.com/YokeshSM/MemeGen"
     },
     {
       id: 3,
@@ -123,7 +125,7 @@ const Projects = () => {
         "This app gets the user's name as input and generates random birthday quotes for them. Tools Used: HTML5, CSS & JavaScript",
       imgSrc:
         'https://cdn.shopify.com/s/files/1/0508/6576/6572/files/Lovely_Birthday_wishes_images.jpg?v=1698784791',
-      gitlink:'https://yokeshsm.neocities.org/Birthdayquotes/'
+      gitlink:"https://yokeshsm.neocities.org/Birthdayquotes/"
     },
   ];
 
@@ -135,7 +137,7 @@ const Projects = () => {
           title={card.title}
           description={card.description}
           imgSrc={card.imgSrc}
-          link={card.gitlink}
+          gitlink={card.gitlink}
         />
       ))}
     </div>

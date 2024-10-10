@@ -1,16 +1,53 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState , useRef} from 'react'
+import { addUser } from '../services/api'
 import img from "../assets/images/mailbox-with-valentine-s-day-love-letter-romantic-correspondence-sending-love-letter-isolated-illustration-vector.jpg"
 const login = () => {
     const [visible,setvisible]=useState(false)
-    const handsubmit =(e)=>{
-      
-      window.alert("Form Submitted")
+    const namer=useRef(null)
+    const phoner=useRef(null)
+    const emailr=useRef(null)
+    const messager=useRef(null)
+    const handsubmit =async(e)=>{
+      e.preventDefault()
+      const projectDetails ={
+        name:namer.current.value,
+        phone:phoner.current.value,
+        email:emailr.current.value,
+        message:messager.current.value
+      }
+      try{
+        const n1=namer.current.value.trim();
+        const n2=phoner.current.value.trim();
+        const n3=messager.current.value.trim();
+        const n4=emailr.current.value.trim();
+        if(n1===''||n2===''||m3===''||n4==='')
+        {
+         window.alert("Enter All the Details Properly")
+        }
+        else
+        {
+       const response=await addUser(projectDetails)
+       if(response.status==201)
+           {
+              console.log(n1);
+              console.log(n2);
+              console.log(n3);
+              console.log(n4);
+              window.alert("Form Submitted")
+            }
+          }
+             
+      }
+      catch(error)
+      {
+        window.alert("Error")
+      }
     }
   return (
       <>
-      <div className="p-10">
-       <div className="flex flex-col md:flex-row max-w-4xl mx-auto bg-purple-200 shadow-lg rounded-lg overflow-hidden">
+      <div className="p-10 ">
+       <div className="flex flex-col md:flex-row max-w-4xl mx-auto bg-blue-200 shadow-2xl rounded-lg overflow-hidden ">
      
       <div className="md:w-1/2">
         <img
@@ -26,14 +63,25 @@ const login = () => {
             <label className="block text-gray-700">Full Name</label>
             <input
               type="text"
+              ref={namer}
               placeholder="Your Name"
               className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
           </div>
           <div>
+            <label className="block text-gray-700">Phone</label>
+            <input
+              type="Phone"
+              ref={phoner}
+              placeholder="Your Phone"
+              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              />
+          </div>
+          <div>
             <label className="block text-gray-700">Email</label>
             <input
               type="email"
+              ref={emailr}
               placeholder="Your Email"
               className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
@@ -42,6 +90,7 @@ const login = () => {
             <label className="block text-gray-700">Message</label>
             <textarea
               rows="4"
+              ref={messager}
               placeholder="Your Message"
               className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
@@ -55,6 +104,10 @@ const login = () => {
         </form>
       </div>
     </div>
+    </div>
+    <div className="p-5">
+    <span className="w-full  flex justify-center ">for any queries contact yokeshsm2003@gmail.com</span>
+    <span className="w-full  flex justify-center ">Or Reach me through +91 8098327811</span>
     </div>
       </>
  );

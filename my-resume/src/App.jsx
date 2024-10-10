@@ -13,7 +13,9 @@ function App() {
 
   return (
     <>
-    <div className="fuzzy-bubbles-regular">
+    
+    <div className="cedarville-cursive-regular font-f bg-blue-50" >
+
    <BrowserRouter>
    <Routes>
     <Route element={<WebLayouts/>}>
@@ -31,3 +33,6 @@ function App() {
 }
 
 export default App
+
+
+// https://gradient.page/css/ui-gradients/friday

@@ -4,8 +4,8 @@ const Home = () => {
   return (
 
     <div>
-      <div className=" h-[100%] w-6/6 p-10">
-  <div className="bg-blue">
+      <div className=" h-[100%] w-6/6 p-10 ">
+  <div className="bg">
   </div>
   {/* <div className=" p-2">
     <div className="">
